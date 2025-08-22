@@ -41,7 +41,7 @@ const Navbar = () => {
                                 </>
                             )
                             }
-                            {user.isAdmin &&(
+                            {user?.isAdmin &&(
                                  <li>
                                         <NavLink to='/admin/users' style={{ fontSize: "20px" }}>Admin Panel</NavLink>
                                     </li>
