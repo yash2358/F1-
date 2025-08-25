@@ -9,7 +9,7 @@ const Navbar = () => {
             <header>
                 <div className="container">
                     <div className="logo">
-                        <NavLink to='/' style={{ fontSize: "50px" }}>F1 Race</NavLink>
+                        <NavLink to='/' style={{ fontSize: "50px" }}>All About F1 Race</NavLink>
                     </div>
                     <nav>
                         <ul>
