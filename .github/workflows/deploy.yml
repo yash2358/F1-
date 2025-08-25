@@ -27,7 +27,7 @@ jobs:
       - name: Deploy to S3
         uses: aws-actions/s3-sync@v2
         with:
-          source_dir: build/  # Change to dist/ if your framework uses that
+          source_dir: dist/  # Change to dist/ if your framework uses that
           bucket: ${{ secrets.AWS_S3_BUCKET }}
           region: ${{ secrets.AWS_REGION }}
           delete: true
