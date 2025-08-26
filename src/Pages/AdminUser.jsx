@@ -7,8 +7,10 @@ import { Link, Outlet } from 'react-router-dom';
 const AdminUser = () => {
     const { token,apiUrl } = useAuth()
     const [users, setUsers] = useState();
+    const [search, setSearch] = useState("");
+
     useEffect(() => {
-        fetch(`${apiUrl}/api/admin/users`, {
+        fetch(`${apiUrl}/api/admin/users?search=${search}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -22,7 +24,7 @@ const AdminUser = () => {
                 }
             })
             .catch((err) => toast(err))
-    }, [])
+    }, [search])
 
     const deleteUser = async (id) => {
         try {
@@ -46,9 +48,14 @@ const AdminUser = () => {
     }
 
     return (
-        <>
-            <section style={{ minHeight: '80vh', background: '#181818', padding: '2rem 0' }}>
-                <div style={{ maxWidth: '1100px', margin: '0 auto', background: '#fff', borderRadius: '10px', boxShadow: '0 2px 16px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+            <>
+                <section style={{ minHeight: '80vh', background: '#181818', padding: '2rem 0' }}>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', maxWidth: '1100px', margin: '0 auto 1rem auto' }}>
+                        <input type="text" placeholder="Search..." 
+                         onChange={(e)=>setSearch(e.target.value)}
+                        style={{ padding: '0.5rem 1rem', borderRadius: '5px', border: '1px solid #ccc', fontSize: '1rem', minWidth: '220px' }} />
+                    </div>
+                    <div style={{ maxWidth: '1100px', margin: '0 auto', background: '#fff', borderRadius: '10px', boxShadow: '0 2px 16px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'inherit' }}>
                         <thead>
                             <tr style={{ background: '#fff', color: '#222', fontWeight: 600, fontSize: '1.1rem' }}>
